@@ -6,10 +6,12 @@ Page({
     hotKeyShow:true,
     historyKeyShow:true,
     searchValue:'',
-    page:0,
+    page:1,
     productData:[],
     historyKeyList:[],
-    hotKeyList:[]
+    hotKeyList:[],
+    dataEmpty:false,//是否有查询数据用于判断是否要下拉加载
+    isOnReach:false,//是否是下拉加载
   },
   onLoad:function(options){
     var that = this;
@@ -40,10 +42,12 @@ Page({
   onReachBottom:function(){
       //下拉加载更多多...
       this.setData({
-        page:(this.data.page+10)
+        isOnReach:true,
+        page:(this.data.page+1)
       })
-      
-      this.searchProductData();
+      if(!this.data.dataEmpty){
+        this.searchProductData();
+      }
   },
   doKeySearch:function(e){
     var key = e.currentTarget.dataset.key;
@@ -82,9 +86,7 @@ Page({
     wx.getStorage({
       key: 'historyKeyList',
       success: function(res) {
-          console.log(res.data);
 
-          //console.log(res.data.indexOf(key))
           if(res.data.indexOf(key) >= 0){
             return;
           }
@@ -112,9 +114,20 @@ Page({
         historyKeyShow:true,
       });
     }
+    this.searchProductData();
   },
   searchProductData:function(){
     var that = this;
+    console.log(that.data.isOnReach);
+    if (!that.data.isOnReach){//判断是否是下拉加载
+      that.setData({
+        page : 0,
+      });
+    }else{
+      that.setData({
+        isOnReach: false,
+      });
+    }
     wx.request({
       url: app.d.ceshiUrl + '/Api/Search/searches',
       method:'post',
@@ -128,9 +141,34 @@ Page({
       },
       success: function (res) {   
         var data = res.data.pro;
-        that.setData({
-          productData:that.data.productData.concat(data),
-        });
+        if (!that.data.searchValue){
+          that.setData({
+            productData: [],
+            dataEmpty: true,
+          });
+          return false;
+        }
+        if (data.length != 0 ) {
+          var dataEmpty = false;
+          if (data.length<6){
+            dataEmpty = true;
+          }
+          that.setData({
+            productData: that.data.productData.concat(data),
+            dataEmpty: dataEmpty,
+          });
+
+        }else{
+          wx.showToast({
+            title: '没有查找到数据~',
+            duration: 2000
+          });
+          that.setData({
+            productData: [],
+            dataEmpty: true,
+          });
+        }
+       
       },
       fail:function(e){
         wx.showToast({

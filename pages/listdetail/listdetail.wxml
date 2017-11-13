@@ -2,7 +2,7 @@
     <view class="cate-nav">
       <scroll-view scroll-x="true" class="cate-nav-body" style="width: 750rpx;" scroll-left="{{scrollLeft}}">
       <view  wx:for="{{navList}}" class="item {{ cat_id == item.id ? 'active' : ''}}" data-id="{{item.id }}" data-index="{{index}}" bindtap="switchCate">
-      <view class="name">{{item.name }}</view>
+      <navigator class="name" url="../listdetail/listdetail?cat_id={{item.id}}&title={{item.name}}">{{item.name }}</navigator>
       </view>
       </scroll-view>
     </view>

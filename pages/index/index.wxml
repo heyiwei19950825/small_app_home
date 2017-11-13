@@ -1,7 +1,7 @@
 <!-- index.wxml -->
 <view class="page">
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-    <block wx:for="{{imgUrls}}">
+    <block wx:for="{{imgUrls}}" wx:if="{{item.position == 1}}">
       <swiper-item>
         <image src="{{item.photo}}" class="slide-image" width="100%" height="200"  />
       </swiper-item>
@@ -12,17 +12,17 @@
   <view class="cont">
     <!-- 分类 -->
     <view>
-    <!-- <view class="h">
-      <view open-type="">
-        <text class="txt">经典分类</text>
-        </view>
-    </view>
+      <!-- <view class="h">
+        <view open-type="">
+          <text class="txt">经典分类</text>
+          </view>
+        </view> -->
       <view class="m-menu">
-        <navigator  class="item" url="{{item.url}}" wx:for="{{cate}}">
-          <image src="{{item.bz_1}}" background-size="cover"></image>
+        <navigator  class="item" url="{{item.url}}" wx:for="{{brand}}">
+          <image src="{{item.photo}}" background-size="cover"></image>
           <text>{{item.name}}</text>
         </navigator>
-      </view> -->
+      </view> 
 
       <view clas='theme-box'>
         <navigator class="pr" url="../product/detail?productId={{item.id}}" hover-class="changestyle"

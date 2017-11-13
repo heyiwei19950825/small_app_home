@@ -134,7 +134,7 @@ onLoad: function (options) {
       success: function (res) {
         
         var shoplist = res.data.pro;
-        var navList = res.data.brand;
+        var navList = res.data.cateList;
         var cat = res.data.cat;
         that.setData({
           shopList: shoplist,

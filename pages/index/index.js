@@ -73,21 +73,21 @@ other: function(e){
 },
 
 //品牌街跳转商家详情页
-jj:function(e){
-    var id = e.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: '../listdetail/listdetail?brandId='+id,
-      success: function(res){
-        // success
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
-      }
-    })
-  },
+// jj:function(e){
+//     var id = e.currentTarget.dataset.id;
+//     wx.navigateTo({
+//       url: '../listdetail/listdetail?brandId='+id,
+//       success: function(res){
+//         // success
+//       },
+//       fail: function() {
+//         // fail
+//       },
+//       complete: function() {
+//         // complete
+//       }
+//     })
+//   },
 
 
 tian: function (e) {
@@ -175,14 +175,14 @@ getMore:function(e){
         var ggtop = res.data.ggtop;
         var procat = res.data.procat;
         var prolist = res.data.prolist;
-        var cate = res.data.cate;
+        var brand = res.data.brand;
         var course = res.data.course;
         //that.initProductData(data);
         that.setData({
           imgUrls:ggtop,
           proCat:procat,
           productData:prolist,
-          cate: cate,
+          brand: brand,
           course: course
         });
         //endInitData
