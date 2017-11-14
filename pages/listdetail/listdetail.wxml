@@ -7,9 +7,14 @@
       </scroll-view>
     </view>
     <view class='cate-item'>
-      <view class="h">
+      <view class="h"  wx:if='{{cat.name != null}}'><!-- 分类标题和描述 -->
             <text class="name">{{cat.name}}</text>
             <text class="desc">{{cat.concent}}</text>
+      </view>
+     <view wx:if='{{cat.banner != null}}'> <!-- 品牌广告banner -->
+        <swiper>
+            <image src="{{cat.banner}}" class="slide-image" width="100%" height="100"  />
+        </swiper>
       </view>
       <view class='b'>
         <block wx:for="{{shopList}}" wx:key="*this" data-id="{{item.id}}">
@@ -34,7 +39,11 @@
         <view animation="{{animationData}}" class="item" wx:if="{{showModalStatus}}"></view> 
         </block>
       </view>
-      <view class="clear mt10" bindtap="getMore">点击查看更多</view>    
+      <view class="clear mt10" bindtap="getMore" wx:if='{{shopList.length < 0}}'>点击查看更多</view>   
+      <view class="search_no" wx:if='{{shopList.length == 0}}'>
+          <view class="font_14"><image class="scimg" src="/images/search_no.png"></image></view>
+          <text>没有找到您要的宝贝/(ㄒoㄒ)/~~</text>
+      </view> 
     </view>
 </view>
 

@@ -7,7 +7,7 @@ Page({
     title:'宠物美容学校',
     page:2,
     catId:0,
-    brandId: 0,
+    brand_id: 0,
     navList: [],
     goodsList: [],
     id: 0,
@@ -70,7 +70,7 @@ getMore:function(e){
         page:page,
         ptype:that.data.ptype,
         cat_id:that.data.catId,
-        brand_id: that.data.brandId
+        brand_id: that.data.brand_id
       },
       header: {
         'Content-Type':  'application/x-www-form-urlencoded'
@@ -112,12 +112,12 @@ onLoad: function (options) {
     //页面初始化 options为页面跳转所带来的参数
     var cat_id = options.cat_id;
     var ptype = options.ptype;
-    var brandId = options.brandId;
+    var brand_id = options.brand_id;
     var that = this;
     that.setData({
       ptype: ptype,
       catId: cat_id,
-      brandId: brandId
+      brand_id: brand_id
     })
     //ajax请求数据
     wx.request({
@@ -126,7 +126,7 @@ onLoad: function (options) {
       data: {
         cat_id:cat_id,
         ptype:ptype,
-        brand_id: brandId
+        brand_id: brand_id
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded'

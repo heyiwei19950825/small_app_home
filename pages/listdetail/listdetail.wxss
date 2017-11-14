@@ -231,3 +231,7 @@ page {
     font-size: 24rpx;
     color: #999;
 }
+
+.slide-image{
+  margin-bottom: 20px;
+}

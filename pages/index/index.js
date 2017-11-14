@@ -17,7 +17,9 @@ Page({
     imgUrl: [],
     kbs:[],
     lastcat:[],
-    course:[]
+    course:[],
+    currentCity: '',//当前位置
+    location:'',
   },
 //跳转商品列表页   
 listdetail:function(e){
@@ -141,73 +143,113 @@ getMore:function(e){
     })
 },
 
-  changeIndicatorDots: function (e) {
-    this.setData({
-      indicatorDots: !this.data.indicatorDots
-    })
-  },
-  changeAutoplay: function (e) {
-    this.setData({
-      autoplay: !this.data.autoplay
-    })
-  },
-  intervalChange: function (e) {
-    this.setData({
-      interval: e.detail.value
-    })
-  },
-  durationChange: function (e) {
-    this.setData({
-      duration: e.detail.value
-    })
-  },
+changeIndicatorDots: function (e) {
+  this.setData({
+    indicatorDots: !this.data.indicatorDots
+  })
+},
+changeAutoplay: function (e) {
+  this.setData({
+    autoplay: !this.data.autoplay
+  })
+},
+intervalChange: function (e) {
+  this.setData({
+    interval: e.detail.value
+  })
+},
+durationChange: function (e) {
+  this.setData({
+    duration: e.detail.value
+  })
+},
 
-  onLoad: function (options) {
-    var that = this;
-    wx.request({
-      url: app.d.ceshiUrl + '/Api/Index/index',
-      method:'post',
-      data: {},
-      header: {
-        'Content-Type':  'application/x-www-form-urlencoded'
-      },
-      success: function (res) {  
-        var ggtop = res.data.ggtop;
-        var procat = res.data.procat;
-        var prolist = res.data.prolist;
-        var brand = res.data.brand;
-        var course = res.data.course;
-        //that.initProductData(data);
-        that.setData({
-          imgUrls:ggtop,
-          proCat:procat,
-          productData:prolist,
-          brand: brand,
-          course: course
-        });
-        //endInitData
-      },
-      fail:function(e){
-        wx.showToast({
-          title: '网络异常！',
-          duration: 2000
-        });
-      },
-    })
+onLoad: function (options) {
+  var that = this;
+  wx.request({
+    url: app.d.ceshiUrl + '/Api/Index/index',
+    method:'post',
+    data: {},
+    header: {
+      'Content-Type':  'application/x-www-form-urlencoded'
+    },
+    success: function (res) {  
+      var ggtop = res.data.ggtop;
+      var procat = res.data.procat;
+      var prolist = res.data.prolist;
+      var brand = res.data.brand;
+      var course = res.data.course;
+      //that.initProductData(data);
+      that.setData({
+        imgUrls:ggtop,
+        proCat:procat,
+        productData:prolist,
+        brand: brand,
+        course: course
+      });
+      //endInitData
+    },
+    fail:function(e){
+      wx.showToast({
+        title: '网络异常！',
+        duration: 2000
+      });
+    },
+  });
+  this.getLocation();
 
-  },
-  onShareAppMessage: function () {
-    return {
-      title: '水果商店',
-      path: '/pages/index/index',
-      success: function(res) {
-        // 分享成功
-      },
-      fail: function(res) {
-        // 分享失败
-      }
+},
+onShareAppMessage: function () {
+  return {
+    title: '水果商店',
+    path: '/pages/index/index',
+    success: function(res) {
+      // 分享成功
+    },
+    fail: function(res) {
+      // 分享失败
     }
   }
+},
+getLocation: function () {//获取当前位置
+  var page = this
+  wx.getLocation({
+    type: 'wgs84',   //<span class="comment" style="margin: 0px; padding: 0px; border: none;">默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标</span><span style="margin: 0px; padding: 0px; border: none;"> </span>  
+    success: function (res) {
+      // success    
+      var longitude = res.longitude
+      var latitude = res.latitude
+      page.loadCity(longitude, latitude)
+    }
+  })
+},
+loadCity: function (longitude, latitude) {
+  var that = this;
+  var location = that.data.location;
+  wx.request({
+    url: app.d.ceshiUrl +'/Api/Map/getlocation',
+    method: 'post',
+    data: {
+      location: latitude+ ',' + longitude,
+    },
+    header: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    success: function (res) {
+      // success    
+      // var city = res.data.locationData.result.addressComponent.city;
+      var city = res.data.locationData.result.formatted_address;
+      wx.showModal({
+        title: city,
+      });
+      that.setData({ currentCity: city });//当前位置
+    },
+    fail: function () {
+      page.setData({ currentCity: "获取定位失败" });
+    },
+
+  })
+}  
 
 
 

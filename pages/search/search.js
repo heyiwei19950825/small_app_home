@@ -121,7 +121,7 @@ Page({
     console.log(that.data.isOnReach);
     if (!that.data.isOnReach){//判断是否是下拉加载
       that.setData({
-        page : 0,
+        page : 1,
       });
     }else{
       that.setData({
