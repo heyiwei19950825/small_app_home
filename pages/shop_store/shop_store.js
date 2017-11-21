@@ -63,17 +63,17 @@ Page({
   }.bind(this), 200)
  },
   onPullDownRefresh: function () {
-    console.log('onPullDownRefresh')
+    // console.log('onPullDownRefresh')
   },
 //窗体加载事件  
 onLoad: function (options) {
-  var sid = options.shopId;
-  console.log(sid);
+  // var sid = options.currentTarget.dataset.favId;
+  // console.log(sid);
   var that = this;
     wx.request({
       url: app.d.ceshiUrl + '/Api/Shangchang/shop_details',
       method:'post',
-      data: {shop_id:sid},
+      data: {shop_id:9},
       header: {
         'Content-Type':  'application/x-www-form-urlencoded'
       },
@@ -106,9 +106,9 @@ onLoad: function (options) {
      
   //详情页跳转
 lookdetail: function (e) {
-    console.log(e)
+    // console.log(e)
     var lookid = e.currentTarget.dataset;
-    console.log(e.currentTarget.dataset);
+    // console.log(e.currentTarget.dataset);
     wx.navigateTo({
       url: "../index/detail?id=" + lookid.id
     })

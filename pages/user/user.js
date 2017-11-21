@@ -84,6 +84,17 @@ Page( {
       }
     });
   },
+  removeCache:function(){
+    try {
+      wx.removeStorageSync('logs');
+      wx.showToast({
+        title: '清除成功！',
+        duration: 2000
+      });
+    } catch (e) {
+      // Do something when catch error
+    }
+  },
   onShareAppMessage: function () {
     return {
       title: '宠物美容学校',

@@ -52,10 +52,10 @@ Page({
         'Content-Type':  'application/x-www-form-urlencoded'
       },
       success: function (res) {
-        console.log(res)
+        // console.log(res)
         //--init data        
         var data = res.data;
-        console.log(data);
+        // console.log(data);
         //创建订单成功
         wx.showToast({
           title: data.message,
@@ -73,13 +73,13 @@ Page({
 
   },
   bindPickerPayBankNameChange: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+    // console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       payBankName: this.data.payBankNameList[parseInt(e.detail.value)]
     });
   },
   bindPickerPayMethodChange: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+    // console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       payMethod: this.data.payMethodList[parseInt(e.detail.value)]
     });

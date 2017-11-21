@@ -3,20 +3,20 @@
     <view class="userinfo">
 			<image class="userinfo-avatar fl_l" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
 			<text class="fl_l">{{userInfo.nickName}}</text></view>
-    <!--<view class="sc mt10 df">
-        <view class="df_1 tc">
+    <view class="sc mt10 df">
+         <view class="df_1 tc">
         <navigator url="../user/shoucang" hover-class="none">
           <view><image src="/images/use_sc.png"></image></view>
           <text>我的收藏</text>
           </navigator>
         </view>
         <view class="df_1 tc">
-        <navigator url="../qyry/qyry" hover-class="none">
-          <view><image src="/images/use_ry.png"></image></view>
-          <text>企业荣誉</text>
+        <navigator url="../ritual/ritual" hover-class="none">
+          <view><image src="/images/dfk.png"></image></view>
+          <text>领券中心</text>
           </navigator>
-        </view>
-    </view> -->
+        </view> 
+    </view> 
     <!--订单详情-->
     <view class="qbdd mt10">
     <span class="font_14 c3">全部订单</span>
@@ -57,11 +57,15 @@
     <span class="fl_r c9 font_12 l_h20" hover-class="none"> ></span>
     </navigator>
     </view>
-    <view class="qbdd mt10">
+<view class="qbdd mt10">
  <navigator url="../rituall/rituall">
-    <span class="font_14 c3">优惠劵</span>
+    <span class="font_14 c3">我的优惠劵</span>
     <span class="fl_r c9 font_12 l_h20" hover-class="none"> ></span>
     </navigator>
+    </view>
+<view class="qbdd mt10" bindtap='removeCache'>
+    <span class="font_14 c3" >清除缓存</span>
+    <span class="fl_r c9 font_12 l_h20" hover-class="none"> ></span>
     </view>
 <view class="qbdd mt110">
 

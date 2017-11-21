@@ -24,7 +24,11 @@ Page({
     //准备数据
     //数据结构：以一组一组来进行设定
      commodityAttr:[],
-     attrValueList: []
+     attrValueList: [],
+     //收藏图片和名称
+     scimg:'/images/shc.png',
+     scname: '收藏',
+     
   },
 
   // 弹窗
@@ -99,6 +103,7 @@ Page({
       method:'post',
       data: {
         pro_id: that.data.productId,
+        uid: app.d.userId,
       },
       header: {
         'Content-Type':  'application/x-www-form-urlencoded'
@@ -109,7 +114,16 @@ Page({
         if(status==1) {   
           var pro = res.data.pro;
           var content=pro.content;
-          //that.initProductData(data);
+          //收藏
+          if (pro.collect == 0 ){
+            that.setData({
+              scname: '收藏',
+            });
+          }else{
+            that.setData({
+              scname: '取消收藏',
+            });
+          }
           WxParse.wxParse('content', 'html', content, that, 3);
           that.setData({
             itemData:pro,
@@ -367,8 +381,18 @@ Page({
             title: '操作成功！',
             duration: 2000
           });
+          if(data.option == 'add'){
+            that.setData({
+              scname: '取消收藏',
+            });
+          }else{
+            that.setData({
+              scname: '收藏',
+            });
+          }
+          console.log(that.data.scname);
           //变成已收藏，但是目前小程序可能不能改变图片，只能改样式
-          that.data.itemData.isCollect = true;
+          that.data.itemData.collect =true;
         }else{
           wx.showToast({
             title: data.err,

@@ -118,7 +118,7 @@ Page({
   },
   searchProductData:function(){
     var that = this;
-    console.log(that.data.isOnReach);
+    // console.log(that.data.isOnReach);
     if (!that.data.isOnReach){//判断是否是下拉加载
       that.setData({
         page : 1,

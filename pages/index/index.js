@@ -196,7 +196,7 @@ onLoad: function (options) {
       });
     },
   });
-  this.getLocation();
+  // this.getLocation();
 
 },
 onShareAppMessage: function () {
@@ -211,45 +211,45 @@ onShareAppMessage: function () {
     }
   }
 },
-getLocation: function () {//获取当前位置
-  var page = this
-  wx.getLocation({
-    type: 'wgs84',   //<span class="comment" style="margin: 0px; padding: 0px; border: none;">默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标</span><span style="margin: 0px; padding: 0px; border: none;"> </span>  
-    success: function (res) {
-      // success    
-      var longitude = res.longitude
-      var latitude = res.latitude
-      page.loadCity(longitude, latitude)
-    }
-  })
-},
-loadCity: function (longitude, latitude) {
-  var that = this;
-  var location = that.data.location;
-  wx.request({
-    url: app.d.ceshiUrl +'/Api/Map/getlocation',
-    method: 'post',
-    data: {
-      location: latitude+ ',' + longitude,
-    },
-    header: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    success: function (res) {
-      // success    
-      // var city = res.data.locationData.result.addressComponent.city;
-      var city = res.data.locationData.result.formatted_address;
-      wx.showModal({
-        title: city,
-      });
-      that.setData({ currentCity: city });//当前位置
-    },
-    fail: function () {
-      page.setData({ currentCity: "获取定位失败" });
-    },
+// getLocation: function () {//获取当前位置
+//   var page = this
+//   wx.getLocation({
+//     type: 'wgs84',   //<span class="comment" style="margin: 0px; padding: 0px; border: none;">默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标</span><span style="margin: 0px; padding: 0px; border: none;"> </span>  
+//     success: function (res) {
+//       // success    
+//       var longitude = res.longitude
+//       var latitude = res.latitude
+//       page.loadCity(longitude, latitude)
+//     }
+//   })
+// },
+// loadCity: function (longitude, latitude) {
+//   var that = this;
+//   var location = that.data.location;
+//   wx.request({
+//     url: app.d.ceshiUrl +'/Api/Map/getlocation',
+//     method: 'post',
+//     data: {
+//       location: latitude+ ',' + longitude,
+//     },
+//     header: {
+//       'Content-Type': 'application/x-www-form-urlencoded'
+//     },
+//     success: function (res) {
+//       // success    
+//       // var city = res.data.locationData.result.addressComponent.city;
+//       var city = res.data.locationData.result.formatted_address;
+//       wx.showModal({
+//         title: city,
+//       });
+//       that.setData({ currentCity: city });//当前位置
+//     },
+//     fail: function () {
+//       page.setData({ currentCity: "获取定位失败" });
+//     },
 
-  })
-}  
+//   })
+// }  
 
 
 

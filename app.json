@@ -17,7 +17,8 @@
     "pages/category/index",     
     "pages/ritual/ritual",   
     "pages/rituall/rituall", 
-    "pages/shop_store/shop_store"
+    "pages/shop_store/shop_store",
+    "pages/user/shoucang"
 
 
       ],
@@ -25,8 +26,9 @@
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#008842",
     "navigationBarTitleText": "蓝果小镇商城",
-    "navigationBarTextStyle":"white"
-
+    "navigationBarTextStyle":"white",
+    "enablePullDownRefresh": "true",
+    "backgroundColor": "#008842"
   },
    "tabBar": {
     "color": "#858585",

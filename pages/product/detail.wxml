@@ -119,7 +119,7 @@
 </view>
 <!---底部开始-->
 <view class="footfixed tc">
-  <view class="fl_l w40 font_12 hui03 df">
+  <view class="fl_l w55 font_12 hui03 df">
           <view class="df_1 l_h15 pt5 bre">
                 <contact-button type="default-light" session-from="productId_{{itemData.id}}" class="ke">
                 <contact-button class="pos"></contact-button>
@@ -127,14 +127,20 @@
                   <view class="dbtext" style="line;margin-top:5px">客服</view>
                 </contact-button >
           </view>
-            <view class="df_1 l_h15 pt5">
-                 <view bindtap="addFavorites">
-                    <image class="icon_kf" src="/images/shc.png" ></image>
-                    <view bindtap="addFavorites" class="dbtext">收藏</view>
-              </view>
-     </view>
+            <view class="df_1 l_h15 pt5 bre">
+              <view bindtap="addFavorites">
+                <image class="icon_kf" src="/images/shc.png" ></image>
+                <view class="dbtext">{{scname}}</view>
+              </view> 
+            </view>
+            <navigator url="../cart/cart" class="df_1 l_h15 pt5" >
+                <view>
+                    <image class="icon_kf" src="/images/car.png" ></image>
+                    <view class="dbtext">购物车</view>
+                </view> 
+            </navigator>
   </view>
-  <view class="fl_l w60">
+  <view class="fl_l w45">
     <view class="w50 fl_l bg_cheng white" bindtap="addShopCart" data-type="addcart">加入购物车</view>
     <view class="bg_red white w50 fl_l" bindtap="setModalStatus" data-status="1">立刻购买</view>
   </view>
