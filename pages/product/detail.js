@@ -485,5 +485,11 @@ Page({
         currentTab: e.target.dataset.current
       })
     }
-  }
+  },
+  /*跳转到购物车*/
+  onCartTap: function () {
+    wx.switchTab({
+      url: '/pages/cart/cart'
+    });
+  },
 });

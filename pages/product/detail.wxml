@@ -133,12 +133,12 @@
                 <view class="dbtext">{{scname}}</view>
               </view> 
             </view>
-            <navigator url="../cart/cart" class="df_1 l_h15 pt5" >
+            <view class="df_1 l_h15 pt5" bindtap='onCartTap'>
                 <view>
                     <image class="icon_kf" src="/images/car.png" ></image>
                     <view class="dbtext">购物车</view>
                 </view> 
-            </navigator>
+            </view>
   </view>
   <view class="fl_l w45">
     <view class="w50 fl_l bg_cheng white" bindtap="addShopCart" data-type="addcart">加入购物车</view>

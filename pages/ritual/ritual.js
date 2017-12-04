@@ -40,10 +40,11 @@ Page({
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
     var that = this;
+    var uid = app.d.userId;
     wx.request({
       url: app.d.ceshiUrl + '/Api/Voucher/index',
       method:'post',
-      data: {},
+      data: { uid: uid},
       header: {
         'Content-Type':  'application/x-www-form-urlencoded'
       },

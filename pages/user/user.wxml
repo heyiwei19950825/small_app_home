@@ -67,6 +67,13 @@
     <span class="font_14 c3" >清除缓存</span>
     <span class="fl_r c9 font_12 l_h20" hover-class="none"> ></span>
     </view>
+
+<view class="qbdd mt10">
+<navigator url="../shop_store/shop_store">
+    <span class="font_14 c3" >关于我们</span>
+    <span class="fl_r c9 font_12 l_h20" hover-class="none"> ></span>
+</navigator>
+</view>
 <view class="qbdd mt110">
 
 <contact-button>

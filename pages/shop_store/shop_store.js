@@ -10,6 +10,9 @@ Page({
       curHdIndex: 0, 
       curBdIndex: 0 
     }, 
+    markers: [],//地图插件
+    latitude: 0,
+    longitude: 0,
     current: 0,
   },
     tabFun: function(e){ 
@@ -73,7 +76,7 @@ onLoad: function (options) {
     wx.request({
       url: app.d.ceshiUrl + '/Api/Shangchang/shop_details',
       method:'post',
-      data: {shop_id:9},
+      data: {shop_id:1},
       header: {
         'Content-Type':  'application/x-www-form-urlencoded'
       },
@@ -86,8 +89,23 @@ onLoad: function (options) {
           WxParse.wxParse('content', 'html', content, that, 3);
            that.setData({
             shopInfo:shop_info,
+            latitude: shop_info.location_y,
+            longitude: shop_info.location_x,
+            markers:
+            [{
+               iconPath: "/images/map_2.png",
+               id: 0,
+               latitude: shop_info.location_y,
+               longitude: shop_info.location_x,
+               width: 20,
+               height: 20,
+               title: 'asdasdas',
+             }],
+            
             proList:pro,
           });
+           console.log(that.data.markers);
+          
         }else{
           wx.showToast({
             title: res.data.err,

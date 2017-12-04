@@ -5,7 +5,9 @@ Page({
     page:1,
     minusStatuses: ['disabled', 'disabled', 'normal', 'normal', 'disabled'],
     total: 0,
-    carts: []
+    carts: [],
+    yunfei:[],
+    yunfei_num:0,
   },
 
 bindMinus: function(e) {
@@ -179,6 +181,8 @@ bindCheckout: function() {
 
 sum: function() {
     var carts = this.data.carts;
+    var yunfei = this.data.yunfei;
+    
     // 计算总金额
     var total = 0;
     for (var i = 0; i < carts.length; i++) {
@@ -186,10 +190,18 @@ sum: function() {
         total += carts[i].num * carts[i].price;
       }
     }
+
+    //运费计算
+    var yunfei_num = yunfei.price;
+    if (total > yunfei.price_max){
+      yunfei_num = 0;
+    }
+
     // 写回经点击修改后的数组
     this.setData({
       carts: carts,
-      total: '¥ ' + total
+      total: '¥ ' + total,
+      yunfei_num: '¥ ' + yunfei_num,
     });
   },
 
@@ -258,8 +270,16 @@ removeShopCard:function(e){
       success: function (res) {
         //--init data
         var cart = res.data.cart;
+        var yunfei = res.data.yunfei;
+        var yunfei_num = res.data.yunfei.price;
+        var yunfei_name = res.data.yunfei.name;
+        
         that.setData({
           carts:cart,
+          yunfei: yunfei,
+          yunfei_num: yunfei_num,
+          yunfei_name: yunfei_name
+          
         });
         //endInitData
       },

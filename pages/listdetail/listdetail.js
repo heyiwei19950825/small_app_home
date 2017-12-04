@@ -4,7 +4,7 @@ Page({
     current: 0,
     shopList: [],
     ptype:'',
-    title:'宠物美容学校',
+    title:'水果店',
     page:2,
     catId:0,
     brand_id: 0,
@@ -58,6 +58,16 @@ hideModal: function () {
    })
   }.bind(this), 200)
 },
+skip:function(e){
+  if (this.data.brand_id != undefined){
+    var url_data = '../listdetail/listdetail?brand_id=';
+  }else{
+    var url_data = '../listdetail/listdetail?cat_id=';
+  }
+  wx.navigateTo({
+    url: url_data + e.currentTarget.dataset.id +'&title='+e.currentTarget.dataset.title,
+  })
+},
 
 //点击加载更多
 getMore:function(e){
@@ -110,15 +120,17 @@ onLoad: function (options) {
     });
 
     //页面初始化 options为页面跳转所带来的参数
+    var that = this;
     var cat_id = options.cat_id;
     var ptype = options.ptype;
     var brand_id = options.brand_id;
-    var that = this;
+    
     that.setData({
       ptype: ptype,
       catId: cat_id,
       brand_id: brand_id
     })
+
     //ajax请求数据
     wx.request({
       url: app.d.ceshiUrl + '/Api/Product/lists',
@@ -142,13 +154,17 @@ onLoad: function (options) {
           cat_id: cat_id,
           cat: res.data.cat
         })
-
+        if ( cat_id == undefined ){
+          var h_id = brand_id;
+        }else{
+          var h_id = cat_id;
+        }
         //nav位置
         let currentIndex = 0;
         let navListCount = that.data.navList.length;
         for (let i = 0; i < navListCount; i++) {
           currentIndex += 1;
-          if (that.data.navList[i].id == that.data.id) {
+          if (that.data.navList[i].id == h_id) {
             break;
           }
         }
@@ -197,6 +213,28 @@ onLoad: function (options) {
   },
   onUnload: function () {
     // 页面关闭
-  }
+  },
+  // switchCate: function (event) {
+  //   if (this.data.id == event.currentTarget.dataset.id) {
+  //     return false;
+  //   }
+  //   var that = this;
+  //   var clientX = event.detail.x;
+  //   var currentTarget = event.currentTarget;
+  //   if (clientX < 60) {
+  //     that.setData({
+  //       scrollLeft: currentTarget.offsetLeft - 60
+  //     });
+  //   } else if (clientX > 330) {
+  //     that.setData({
+  //       scrollLeft: currentTarget.offsetLeft
+  //     });
+  //   }
+  //   this.setData({
+  //     id: event.currentTarget.dataset.id
+  //   });
+
+  //   // this.getCategoryInfo();
+  // }
 
 })

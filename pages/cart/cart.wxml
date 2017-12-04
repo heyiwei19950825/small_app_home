@@ -63,6 +63,7 @@
         
         <text>全选</text>
         <text class="reds">{{total}}</text>
+        <text> 运费:</text> <text class="yunfei">{{yunfei_num}}</text><text>({{yunfei_name}})</text>
    </view>
        <view class="button" bindtap='bindCheckout'>立即结算             </view>
 </view>

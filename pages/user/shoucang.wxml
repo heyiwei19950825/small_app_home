@@ -7,14 +7,15 @@
 
     <view class="shop df" wx:for="{{productData}}">        
         <image class="sh_slt" src="{{item.photo}}"></image>
-        <view class="df_1">            
+        <view class="df_1"> 
             <view class="sp_text">
-                <navigator url="../index/detail?productId={{item.pid}}">
-                    <view class="sp_tit ovh1">{{item.pro_name}}</view>
+                <navigator url="../product/detail?productId={{item.pid}}">
+                  <view class="sp_tit ovh1">{{item.pro_name}}</view>
+                  <view class="sp_jg">￥：{{item.price_yh}}</view>
                 </navigator>
-                <view class="sp_jg">￥：{{item.price_yh}}</view>
                 <view class="dle" data-fav-id="{{item.id}}" bindtap="removeFavorites">取消收藏</view>
             </view>
+            
         </view>
     </view>
 </view>

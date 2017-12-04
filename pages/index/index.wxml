@@ -18,10 +18,10 @@
           </view>
         </view> -->
       <view class="m-menu">
-        <navigator  class="item" url="{{item.url}}" wx:for="{{brand}}" url="../listdetail/listdetail?brand_id={{item.id}}&title={{item.name}}">
+        <view  class="item" url="{{item.url}}" wx:for="{{brand}}" url="../listdetail/listdetail?brand_id={{item.id}}&title={{item.name}}">
           <image src="{{item.photo}}" background-size="cover"></image>
           <text>{{item.name}}</text>
-        </navigator>
+        </view>
       </view> 
 
       <view clas='theme-box'>
