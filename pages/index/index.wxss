@@ -449,7 +449,7 @@ opacity: 0;
 .m-menu {
   display: flex;
   height: 181rpx;
-  width: 750rpx;
+  width:100%;
   flex-flow: row nowrap;
   align-items: center;
   justify-content: space-between;

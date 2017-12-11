@@ -152,8 +152,9 @@ onPullDownRefresh: function () {
       // complete
       wx.hideNavigationBarLoading() //完成停止加载
     }, 1500);
+  // wx.startPullDownRefresh()
+  
   },
-
 });
 
 

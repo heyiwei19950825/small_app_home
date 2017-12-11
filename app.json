@@ -28,7 +28,7 @@
     "navigationBarTitleText": "蓝果小镇商城",
     "navigationBarTextStyle":"white",
     "enablePullDownRefresh": "true",
-    "backgroundColor": "#008842"
+    "backgroundColor": "#F0F8FF"
   },
    "tabBar": {
     "color": "#858585",

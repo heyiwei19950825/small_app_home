@@ -64,7 +64,7 @@ skip:function(e){
   }else{
     var url_data = '../listdetail/listdetail?cat_id=';
   }
-  wx.navigateTo({
+  wx.redirectTo({
     url: url_data + e.currentTarget.dataset.id +'&title='+e.currentTarget.dataset.title,
   })
 },

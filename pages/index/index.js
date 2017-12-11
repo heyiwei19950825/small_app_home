@@ -250,7 +250,4 @@ onShareAppMessage: function () {
 
 //   })
 // }  
-
-
-
 });

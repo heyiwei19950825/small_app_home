@@ -4,7 +4,7 @@
 }
 .userinfo{
   position: relative;
-  width: 750rpx;
+  width: 100%;
   height: 320rpx;
   background: #008842;
   color: #fff;

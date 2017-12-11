@@ -18,14 +18,15 @@ page {
 }
 
 .btn-area {
+  position: fixed; 
+  width: 100%; 
   display: flex;
   justify-content: center;
+  bottom: 40rpx;  
 }
 
 button {
   width: 90%;
-  position: fixed;
-  bottom: 40rpx;
   color: #fff;
   background-color: #fc0;
 }
