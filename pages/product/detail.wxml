@@ -15,7 +15,7 @@
   <view class="title">{{itemData.name}}</view>
   <view class="gmxx">
     <view><span class="jiage">¥：{{itemData.price_yh}}</span> <span class="c6 fl_r font_14" style='color:#ccc'>库存：{{itemData.num}}</span> </view>
-    <view class="font_14 c6">品牌：{{itemData.brand}}</view>
+    <view class="font_14 c6">品牌：{{itemData.cat_name}}</view>
     
     <view class="font_14 c6">支付：微信支付</view>
 
@@ -35,22 +35,19 @@
              <view  style="font-size:26rpx;color:#ccc">库存：{{itemData.num}}</view>
          </view>
     </view>
-    <!--<view>
+    <view>
         <text class="cun">尺寸</text>
-   </view>-->
-<!--<view class="commodity_attr_list">
-
+   </view>
+<view class="commodity_attr_list">
   <view class="attr_box" wx:for="{{attrValueList}}" wx:for-item="attrValueObj" wx:for-index="attrValueList">
-
     <view class="attr_name">{{attrValueObj.attrKey}}</view>
-
     <view class="attr_value_box">
 
       <view class="attr_value {{attrIndex==firstIndex || attrValueObj.attrValueStatus[valueIndex]?(value==attrValueObj.selectedValue?'attr_value_active':''):'attr_value_disabled'}}" bindtap="selectAttrValue" data-status="{{attrValueObj.attrValueStatus[valueIndex]}}"
       data-value="{{value}}" data-key="{{attrValueObj.attrKey}}" data-index="{{attrIndex}}" data-selectedvalue="{{attrValueObj.selectedValue}}" wx:for="{{attrValueObj.attrValues}}" wx:for-item="value" wx:for-index="valueIndex">{{value}}</view>
     </view>
   </view>
-</view>-->
+</view>
     <view class="shu">
         <text class="cun">购买数量</text>
        <view class="dian">

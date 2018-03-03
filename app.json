@@ -24,15 +24,15 @@
       ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#008842",
-    "navigationBarTitleText": "蓝果小镇商城",
+    "navigationBarBackgroundColor": "#DC143C",
+    "navigationBarTitleText": "梨斗执事",
     "navigationBarTextStyle":"white",
-    "enablePullDownRefresh": "true",
+    "enablePullDownRefresh": true,
     "backgroundColor": "#F0F8FF"
   },
    "tabBar": {
     "color": "#858585",
-    "selectedColor": "#008842",
+    "selectedColor": "#DC143C",
     "borderStyle": "white",
     "backgroundColor": "#ffffff",
     "list": [{

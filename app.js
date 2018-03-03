@@ -2,17 +2,17 @@
 App({
   d: {
     // hostUrl: 'http://test.1.com/index.php',
-    hostUrl: 'https://www.redkylin.com/index.php',
+    hostUrl: 'https://jz.redkylin.com/index.php',
     
     // hostImg: 'http://test.1.com/index.php',
-    hostImg: 'https://www.redkylin.com/index.php',
+    hostImg: 'https://jz.redkylin.com/index.php',
     
     // hostVideo: 'http://zhubaotong-file.oss-cn-beijing.aliyuncs.com',
     userId: 1,
     appId:"",
     appKey:"",
     // ceshiUrl:'http://test.1.com/index.php',
-    ceshiUrl: 'https://www.redkylin.com/index.php',
+    ceshiUrl: 'https://jz.redkylin.com/index.php',
     
   },
   onLaunch: function () {
